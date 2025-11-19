@@ -6,7 +6,6 @@
                 style="opacity: .8">
             <span class="brand-text font-weight-light">AdminLTE 3</span>
         </a>
-
         <!-- Sidebar -->
         <div class="sidebar">
             <!-- Sidebar user panel (optional) -->
