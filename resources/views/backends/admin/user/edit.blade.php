@@ -1,4 +1,4 @@
-@extends('backends.master')
+@extends('backends.admin.layouts.app')
 
 @push('css')
     <style>
@@ -22,6 +22,9 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+        .content-header{
+            padding: 10px !important;
         }
     </style>
 @endpush

@@ -3,17 +3,19 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Spatie\Permission\Traits\HasRoles;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasRoles;
-    protected $guarded = [];
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory;
+    use HasRoles;
+    use Notifiable;
+    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -21,9 +23,16 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
+        'first_name',
+        'last_name',
         'name',
+        'user_id',
         'email',
+        'phone',
+        'telegram',
         'password',
+        'image',
+        'address',
     ];
 
     /**
@@ -46,6 +55,25 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'deleted_at' => 'datetime',
         ];
+    }
+
+    public function scopeSearch($query, ?string $term)
+    {
+        if (! $term) {
+            return $query;
+        }
+
+        $like = '%' . $term . '%';
+
+        return $query->where(function ($q) use ($like) {
+            $q->where('first_name', 'like', $like)
+                ->orWhere('last_name', 'like', $like)
+                ->orWhere('name', 'like', $like)
+                ->orWhere('email', 'like', $like)
+                ->orWhere('phone', 'like', $like)
+                ->orWhere('user_id', 'like', $like);
+        });
     }
 }

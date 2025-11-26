@@ -1,11 +1,9 @@
-@extends('backends.master')
-
+@extends('backends.admin.layouts.app')
 @push('css')
     <style>
         .user-form-card .card-header {
             border-bottom: 0;
         }
-
         .photo-box {
             width: 180px;
             height: 180px;
@@ -23,9 +21,11 @@
             opacity: 0.6;
             transition: all 0.2s ease;
         }
+        .content-header{
+            padding: 10px !important;
+        }
     </style>
 @endpush
-
 @section('contents')
     <section class="content-header"></section>
     <section class="content">
@@ -51,7 +51,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-8">
@@ -182,7 +181,8 @@
                                     <div class="form-group text-center w-100">
                                         <label class="d-block font-weight-bold">{{ __('Photo') }}</label>
                                         <div class="photo-box d-flex align-items-center justify-content-center mx-auto">
-                                            <img class="photo-preview" src="{{ asset('uploads/default-image.png') }}"
+                                            <img class="photo-preview"
+                                                src="{{ getImagePath(null, 'users', 'default-image.png') }}"
                                                 alt="preview">
                                             <input type="file" name="image" class="photo-input" accept="image/*"
                                                 hidden>

@@ -22,33 +22,33 @@
                                 @include('backends.svg.tool')
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton{{ $user->id }}">
-                                @can('user.view')
-                                    <a href="{{ route('admin.user.show', $user->id) }}"
-                                        class="dropdown-item btn btn-success btn-sm">
-                                        <i class="fas fa-eye"></i>
-                                        {{ __('View') }}
-                                    </a>
-                                @endcan
-                                @can('user.edit')
-                                    <a href="{{ route('admin.user.edit', $user->id) }}"
-                                        class="dropdown-item btn btn-info btn-sm btn-edit">
-                                        <i class="fas fa-pencil-alt"></i>
-                                        {{ __('Edit') }}
-                                    </a>
-                                @endcan
+                                {{-- @can('user.view') --}}
+                                <a href="{{ route('admin.user.show', $user->id) }}"
+                                    class="dropdown-item btn btn-success btn-sm">
+                                    <i class="fas fa-eye"></i>
+                                    {{ __('View') }}
+                                </a>
+                                {{-- @endcan --}}
+                                {{-- @can('user.edit') --}}
+                                <a href="{{ route('admin.user.edit', $user->id) }}"
+                                    class="dropdown-item btn btn-info btn-sm btn-edit">
+                                    <i class="fas fa-pencil-alt"></i>
+                                    {{ __('Edit') }}
+                                </a>
+                                {{-- @endcan --}}
                                 <form action="javascript:void(0);" class="d-inline form-delete-{{ $user->id }}">
                                     @csrf
                                     @method('DELETE')
-                                    @can('user.delete')
-                                        @if (!$user->hasRole('admin'))
-                                            <button type="button" data-id="{{ $user->id }}"
-                                                data-href="{{ route('admin.user.destroy', $user->id) }}"
-                                                class="dropdown-item btn btn-danger btn-sm text-danger btn-delete-user">
-                                                <i class="fa fa-trash-alt text-danger"></i>
-                                                {{ __('Delete') }}
-                                            </button>
-                                        @endif
-                                    @endcan
+                                    {{-- @can('user.delete')
+                                        @if (!$user->hasRole('admin')) --}}
+                                    <button type="button" data-id="{{ $user->id }}"
+                                        data-href="{{ route('admin.user.destroy', $user->id) }}"
+                                        class="dropdown-item btn btn-danger btn-sm text-danger btn-delete-user">
+                                        <i class="fa fa-trash-alt text-danger"></i>
+                                        {{ __('Delete') }}
+                                    </button>
+                                    {{-- @endif
+                                    @endcan --}}
                                 </form>
                             </div>
                         </div>

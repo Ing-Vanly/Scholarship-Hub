@@ -37,12 +37,12 @@
                                     <h4 class="mb-0">{{ __('User Management') }}</h4>
                                 </div>
                                 <div class="col-sm-6">
-                                    @can('user.create')
+                                    {{-- @can('user.create') --}}
                                         <a class="btn btn-primary float-right" href="{{ route('admin.user.create') }}">
                                             <i class="fa fa-plus-circle"></i>
                                             {{ __('Add User') }}
                                         </a>
-                                    @endcan
+                                    {{-- @endcan --}}
                                     <a class="btn btn-outline-primary float-right mr-2"
                                         href="{{ route('admin.user.index') }}">
                                         <i class="fas fa-sync-alt"></i>
@@ -51,8 +51,9 @@
                                 </div>
                             </div>
                         </div>
-                        <form class="filterForm" data-module="user" method="GET" action="{{ route('admin.user.index') }}">
-                            @include('backends.user.partials._filter', ['roles' => $roles])
+                        <form class="filterForm" data-module="user" data-table-wrapper="#userTableWrapper" method="GET"
+                            action="{{ route('admin.user.index') }}">
+                            @include('backends.admin.user.partials._filter', ['roles' => $roles])
                         </form>
                     </div>
                     <div class="card">

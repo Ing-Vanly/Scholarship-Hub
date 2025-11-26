@@ -1,5 +1,11 @@
-@extends('backends.master')
-
+@extends('backends.admin.layouts.app')
+@push('css')
+    <style>
+        .content-header {
+            padding: 10px !important;
+        }
+    </style>
+@endpush
 @section('contents')
     <section class="content-header"></section>
     <section class="content">
@@ -16,13 +22,11 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <h3 class="card-title text-bold mb-0">{{ __('User Details') }}</h3>
                                 <div>
-                                    <a class="btn btn-warning text-white mr-2"
-                                        href="{{ route('admin.user.index') }}">
+                                    <a class="btn btn-warning text-white mr-2" href="{{ route('admin.user.index') }}">
                                         <i class="fas fa-undo"></i>
                                         {{ __('Back') }}
                                     </a>
-                                    <a class="btn btn-primary"
-                                        href="{{ route('admin.user.edit', $user->id) }}">
+                                    <a class="btn btn-primary" href="{{ route('admin.user.edit', $user->id) }}">
                                         <i class="fas fa-pencil-alt"></i>
                                         {{ __('Edit') }}
                                     </a>
@@ -32,8 +36,7 @@
                         <div class="card-body">
                             <div class="row align-items-center">
                                 <div class="col-md-3 text-center">
-                                    <img src="{{ $imagePath }}" alt="{{ $fullName }}"
-                                        class="img-fluid mb-3"
+                                    <img src="{{ $imagePath }}" alt="{{ $fullName }}" class="img-fluid mb-3"
                                         style="max-height: 160px; solid #e5edf9; object-fit: cover;">
                                     <div class="text-muted">
                                         <strong>{{ __('User ID') }}</strong>

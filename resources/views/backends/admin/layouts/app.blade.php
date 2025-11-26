@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>AdminLTE 3 | Dashboard</title>
 
     <!-- Google Font: Source Sans Pro -->
@@ -28,12 +29,20 @@
     <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/daterangepicker/daterangepicker.css') }}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/summernote/summernote-bs4.min.css') }}">
-
+    <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/toastr/toastr.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/custom/css/app.css') }}">
+    @stack('css')
 
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini layout-fixed"
+    data-delete-confirm-title="{{ __('Are you sure?') }}"
+    data-delete-confirm-text="{{ __('This record will be permanently deleted!') }}"
+    data-delete-confirm-confirm="{{ __('Yes, delete it!') }}"
+    data-delete-confirm-cancel="{{ __('No, cancel!') }}"
+    data-user-loading-error="{{ __('Failed to load users.') }}"
+    data-user-delete-error="{{ __('Unable to delete user.') }}">
     <div class="wrapper">
         @include('backends.admin.layouts.navbar')
         @include('backends.admin.layouts.sidebar')
@@ -75,6 +84,10 @@
     <script src="{{ asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('AdminLTE/dist/js/adminlte.js') }}"></script>
+    <script src="{{ asset('AdminLTE/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+    <script src="{{ asset('AdminLTE/plugins/toastr/toastr.min.js') }}"></script>
+    <script src="{{ asset('backend/custom/js/admin.js') }}"></script>
+    @stack('scripts')
 </body>
 
 </html>
