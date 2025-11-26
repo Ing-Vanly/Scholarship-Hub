@@ -27,64 +27,35 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                     data-accordion="false">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-copy"></i>
-                            <p>
-                                Layout Options
-                                <i class="fas fa-angle-left right"></i>
-                                <span class="badge badge-info right">6</span>
+                    <li
+                        class="nav-item {{ request()->routeIs('admin.user.*') || request()->routeIs('admin.role.*') || request()->routeIs('admin.permission.*') ? 'menu-is-opening menu-open' : '' }}">
+                        <a href="#"
+                            class="nav-link {{ request()->routeIs('admin.user.*') || request()->routeIs('admin.role.*') || request()->routeIs('admin.permission.*') ? 'active' : '' }}">
+                            @include('backends.admin.svg.user')
+                            <p class="nav-item-p-text">
+                                {{ __('User Management') }}
+                                <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="pages/layout/top-nav.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Top Navigation</p>
+                                <a href="{{ route('admin.user.index') }}"
+                                    class="nav-link {{ request()->routeIs('admin.user.index') || request()->routeIs('admin.user.create') || request()->routeIs('admin.user.edit') || request()->routeIs('admin.user.show') ? 'active' : '' }}">
+                                    <p class="nav-item-p-text ml-2">{{ __('User List') }}</p>
+                                </a>
+                            </li>
+                            {{-- <li class="nav-item">
+                                <a href="{{ route('admin.permission.index') }}"
+                                    class="nav-link {{ request()->routeIs('admin.permission.index') || request()->routeIs('admin.permission.create') || request()->routeIs('admin.permission.edit') || request()->routeIs('admin.permission.show') ? 'active' : '' }}">
+                                    <p class="nav-item-p-text ml-2">{{ __('Permission') }}</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Top Navigation + Sidebar</p>
+                                <a href="{{ route('admin.role.index') }}"
+                                    class="nav-link {{ request()->routeIs('admin.role.index') || request()->routeIs('admin.role.create') || request()->routeIs('admin.role.edit') || request()->routeIs('admin.role.show') ? 'active' : '' }}">
+                                    <p class="nav-item-p-text ml-2">{{ __('Role List') }}</p>
                                 </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/layout/boxed.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Boxed</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/layout/fixed-sidebar.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Fixed Sidebar</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/layout/fixed-sidebar-custom.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Fixed Sidebar <small>+ Custom Area</small></p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/layout/fixed-topnav.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Fixed Navbar</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/layout/fixed-footer.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Fixed Footer</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Collapsed Sidebar</p>
-                                </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </li>
                 </ul>

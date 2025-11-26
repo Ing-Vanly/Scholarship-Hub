@@ -1,0 +1,4 @@
+/*Icon color active*/
+.nav-link.active > svg path {
+    stroke: #0e9bdc !important;
+}
