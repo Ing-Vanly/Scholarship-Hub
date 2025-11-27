@@ -84,7 +84,7 @@ class UserController extends Controller
 
     public function update(UserRequest $request, User $user): RedirectResponse
     {
-        // $this->authorizeAbility('user.edit');
+        $this->authorizeAbility('user.edit');
 
         $data = $request->validated();
         $data['image'] = $request->file('image');

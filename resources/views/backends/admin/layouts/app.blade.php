@@ -86,6 +86,15 @@
     <script src="{{ asset('AdminLTE/dist/js/adminlte.js') }}"></script>
     <script src="{{ asset('AdminLTE/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
     <script src="{{ asset('AdminLTE/plugins/toastr/toastr.min.js') }}"></script>
+    <script>
+        @if (session('success'))
+            window.toastr?.success(@json(session('success')));
+        @endif
+
+        @if (session('error'))
+            window.toastr?.error(@json(session('error')));
+        @endif
+    </script>
     <script src="{{ asset('backend/custom/js/admin.js') }}"></script>
     @stack('scripts')
 </body>

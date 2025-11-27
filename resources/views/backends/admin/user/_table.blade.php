@@ -43,6 +43,8 @@
                                         @if (!$user->hasRole('admin')) --}}
                                     <button type="button" data-id="{{ $user->id }}"
                                         data-href="{{ route('admin.user.destroy', $user->id) }}"
+                                        data-refresh-module="user"
+                                        data-remove-target="tr[data-id='{{ $user->id }}']"
                                         class="dropdown-item btn btn-danger btn-sm text-danger btn-delete-user">
                                         <i class="fa fa-trash-alt text-danger"></i>
                                         {{ __('Delete') }}
@@ -53,21 +55,6 @@
                             </div>
                         </div>
                     </td>
-                    {{-- <td>
-                        <div class="d-flex align-items-center">
-                            <div class="mr-2">
-                                <img src="@if ($user->image && file_exists(public_path('uploads/users/' . $user->image))) {{ asset('uploads/users/' . $user->image) }} @else {{ asset('uploads/default-profile.png') }} @endif"
-                                    alt="{{ $user->first_name }}" class="rounded-circle" width="40" height="40"
-                                    style="object-fit: cover;">
-                            </div>
-                            <div>
-                                <div class="font-weight-bold">
-                                    {{ trim($user->first_name . ' ' . $user->last_name) ?: __('N/A') }}
-                                </div>
-                                <small class="text-muted">{{ $user->user_id ?? __('No ID') }}</small>
-                            </div>
-                        </div>
-                    </td> --}}
                     <td>
                         <img src="{{ getImagePath($user->image, 'users') }}" alt="Profile" class="img-fluid rounded"
                             width="40" height="40">
